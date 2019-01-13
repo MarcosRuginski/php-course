@@ -2,11 +2,14 @@
 
 require_once("config.php");
 
-$sql = new SQL();
+//$sql = new SQL();
+//$usuarios = $sql->select("SELECT * FROM tb_usuarios");
+//echo json_encode($usuarios);
 
-$usuarios = $sql->select("SELECT * FROM tb_usuarios");
+$user = new Usuario();
 
+$user->loadById(3);
 
-echo json_encode($usuarios);
+echo $user;
 
  ?>
