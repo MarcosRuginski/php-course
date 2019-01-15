@@ -7,10 +7,10 @@ require_once("config.php");
 //echo json_encode($usuarios);
 
 //Tras apenas um só
-/*$user = new Usuario();
-$user->loadById(3);
-echo $user;
-*/
+//$user = new Usuario();
+//$user->loadById(4);
+//echo $user;
+
 
 //Carrega uma lista de usuarios
 //$lista = Usuario::getList();
@@ -25,17 +25,20 @@ echo $user;
 //$usuario->login("TESTE","TESTE");
 //echo $usuario;
 
-
-//Insert
+#Insert
 //$aluno = new Usuario("aluno","senhadoaluno");
 //$aluno->insert();
 //echo $aluno;
 
+#Alterar um usuario
+//$usuario = new Usuario();
+//$usuario->loadById(4);
+//$usuario->update("professor","senhadoprofessor");
+//echo $usuario;
+
 $usuario = new Usuario();
-
-$usuario->loadById(6);
-
-$usuario->update("professor","senhadoprofessor");
+$usuario->loadById(5);
+$usuario->delete();
 echo $usuario;
 
 

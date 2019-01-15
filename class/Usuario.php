@@ -119,16 +119,19 @@ class Usuario {
 	public function insert(){
 		$sql = new SQL();
 
-		$results = $sql->select("CALL sp_usuarios_insert(:LOGIN, :SENHA)", array(
+		$results = $sql->select("CALL sp_usuarios_insert(:LOGIN, :PASSWORD)", array(
 			':LOGIN'=>$this->getDeslogin(),
-			':SENHA'=>$this->getDessenha()
+			':PASSWORD'=>$this->getDessenha()
 		));
 
-		$result2 = $sql->select("SELECT * FROM tb_usuarios WHERE idusuario = LAST_INSERT_ID()");
- 
-	    if(count($result2)>0){
-	        $this->setData($result2[0]);
-	    }
+		if (count($results) > 0) {
+			$this->setData($results[0]);
+		}
+
+		/*$this->setIdusuario(7);
+		$this->setDeslogin("22");
+		$this->setDessenha("22");
+		$this->setDtcadastro(new DateTime());*/
 
 	}
 
@@ -143,6 +146,18 @@ class Usuario {
 			':SENHA'=>$this->getDessenha(),
 			':ID'=>$this->getIdusuario()
 		));		
+	}
+
+	public function delete(){
+
+		$sql = new SQL();
+
+		$sql->query("DELETE tb_usuarios WHERE idusuario = 5");	
+
+		/*$this->setIdusuario(0);
+		$this->setDeslogin("");
+		$this->setDessenha("");
+		$this->setDtcadastro(new DateTime());*/
 	}
 
 }
